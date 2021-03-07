@@ -11,7 +11,7 @@ namespace CoworkingWebApi.Models
     {
         [Key]
         public int id { get; set; }
-        [Column(TypeName="nvarchar(100)")]
+        [Column(TypeName = "nvarchar(100)")]
         public string login { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string password { get; set; }
@@ -23,5 +23,7 @@ namespace CoworkingWebApi.Models
         public string email { get; set; }
         [Column(TypeName = "int")]
         public int age { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
+        public string status { get; set; }
     }
 }

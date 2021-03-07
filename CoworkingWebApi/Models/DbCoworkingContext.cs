@@ -13,5 +13,10 @@ namespace CoworkingWebApi.Models
 
         }
         public DbSet<DUser> DUsers {get;set;}
+        public DbSet<DCoworking> DCoworkings { get; set; }
+        public DbSet<DCoworkingFunction> DCoworkingFunctions { get; set; }
+        public DbSet<DCoworkingOrder> DCoworkingOrders { get; set; }
+            
+        public DbSet<DFunction> DFunctions { get; set; }
     }
 }

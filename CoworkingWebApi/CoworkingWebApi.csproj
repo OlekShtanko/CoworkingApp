@@ -1,18 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210306151650_UserMigration.cs" />
+    <Compile Remove="Migrations\20210306151650_UserMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210307115010_Tables Db.cs" />
+    <Compile Remove="Migrations\20210307115010_Tables Db.Designer.cs" />
+    <Compile Remove="Migrations\20210307115301_TableMigration.cs" />
+    <Compile Remove="Migrations\20210307115301_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210307115733_TableMigration.cs" />
+    <Compile Remove="Migrations\20210307115733_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210307121353_TablesMigration.cs" />
+    <Compile Remove="Migrations\20210307121353_TablesMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.12">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 

@@ -19,10 +19,12 @@ namespace CoworkingWebApi.Controllers
     public class AuthorizationController : ControllerBase
     {
         private IConfiguration _config;
+        private readonly DbCoworkingContext _context;
 
-        public AuthorizationController(IConfiguration config)
+        public AuthorizationController(IConfiguration config , DbCoworkingContext context)
         {
             _config = config;
+            _context = context;
         }
         [HttpGet]
         public IActionResult Login(string username, string pass)
@@ -43,19 +45,28 @@ namespace CoworkingWebApi.Controllers
         private DUser AuthenticateUser(DUser auth)
         {
             DUser user = null;
-            if (auth.login == "123" && auth.password == "123")
+            DUser userData = _context.DUsers.FirstOrDefault(u => u.login == auth.login &&
+            u.password == auth.password);
+            if (userData != null)
             {
-                user = new DUser { login = "AshProgHelp" };
+                if (auth.login == userData.login && auth.password == userData.password)
+                {
+                    user = new DUser { login = userData.login, password = userData.password, id=userData.id};
+                }
+                return user;
             }
-            return user;
+            return null;
         }
+       
+        
         private string GenerateJSONWebToken(DUser userinfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub,userinfo.login)
+                new Claim(JwtRegisteredClaimNames.Sub,userinfo.login),
+                new Claim(JwtRegisteredClaimNames.Email,userinfo.id.ToString())
         };
             var token = new JwtSecurityToken(
                 issuer: _config["Jwt:Issuer"],
@@ -73,7 +84,7 @@ namespace CoworkingWebApi.Controllers
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             IList<Claim> claim = identity.Claims.ToList();
-            var userName = claim[0].Value;
+            var userName = claim[1].Value;
             return userName;
         }
     }
