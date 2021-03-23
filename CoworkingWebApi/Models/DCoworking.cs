@@ -11,7 +11,9 @@ namespace CoworkingWebApi.Models
     {
         [Key]
         public int id { get; set; }
-        [Column(TypeName = "int")]
+        [Column(TypeName = "nvarchar(100)")]
+        public string name { get; set; }
+        [Column(TypeName = "int")] 
         public int ownerId { get; set; }
         [Column(TypeName = "float")]
         public float lng { get; set; }
@@ -21,6 +23,9 @@ namespace CoworkingWebApi.Models
         public string adress { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string info { get; set; }
-        public byte[] image { get; set; }
+        [Column(TypeName = "nvarchar(Max)")]
+        public string image { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
+        public string defaultPrice { get; set; }
     }
 }

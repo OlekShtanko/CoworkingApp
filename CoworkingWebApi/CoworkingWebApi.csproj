@@ -15,6 +15,34 @@
     <Compile Remove="Migrations\20210307115733_TableMigration.Designer.cs" />
     <Compile Remove="Migrations\20210307121353_TablesMigration.cs" />
     <Compile Remove="Migrations\20210307121353_TablesMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210307124041_TableMigration.cs" />
+    <Compile Remove="Migrations\20210307124041_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210312203818_TableMigration.cs" />
+    <Compile Remove="Migrations\20210312203818_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210312213609_TableMig.cs" />
+    <Compile Remove="Migrations\20210312213609_TableMig.Designer.cs" />
+    <Compile Remove="Migrations\20210313114611_TableMigration.cs" />
+    <Compile Remove="Migrations\20210313114611_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210313163639_Tables.cs" />
+    <Compile Remove="Migrations\20210313163639_Tables.Designer.cs" />
+    <Compile Remove="Migrations\20210313164240_Table.cs" />
+    <Compile Remove="Migrations\20210313164240_Table.Designer.cs" />
+    <Compile Remove="Migrations\20210313180911_TableMigration.cs" />
+    <Compile Remove="Migrations\20210313180911_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210315121431_TablesMigration.cs" />
+    <Compile Remove="Migrations\20210315121431_TablesMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210315123958_TablesMigration.cs" />
+    <Compile Remove="Migrations\20210315123958_TablesMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210316102849_TableMigration.cs" />
+    <Compile Remove="Migrations\20210316102849_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210316144502_TableMigration.cs" />
+    <Compile Remove="Migrations\20210316144502_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210316160714_TableMigration.cs" />
+    <Compile Remove="Migrations\20210316160714_TableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210316211811_TableCreate.cs" />
+    <Compile Remove="Migrations\20210316211811_TableCreate.Designer.cs" />
+    <Compile Remove="Migrations\20210317144447_TableMigration.cs" />
+    <Compile Remove="Migrations\20210317144447_TableMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

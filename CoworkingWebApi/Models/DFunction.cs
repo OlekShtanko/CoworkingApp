@@ -13,9 +13,9 @@ namespace CoworkingWebApi.Models
         public int id { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string functionName { get; set; }
-        [Column(TypeName = "image")]
-        public byte[] image { get; set; }
 
+        [Column(TypeName = "nvarchar(Max)")]
+        public string image { get; set; }
 
     }
 }

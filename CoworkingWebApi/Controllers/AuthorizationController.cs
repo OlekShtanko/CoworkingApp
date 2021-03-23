@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using CoworkingWebApi.Models;
@@ -45,6 +46,15 @@ namespace CoworkingWebApi.Controllers
         private DUser AuthenticateUser(DUser auth)
         {
             DUser user = null;
+            byte[] ByteData = Encoding.ASCII.GetBytes(auth.password);
+            MD5 md5 = MD5.Create();
+            byte[] HashData = md5.ComputeHash(ByteData);
+            StringBuilder oSb = new StringBuilder();
+            for (int x = 0; x < HashData.Length; x++)
+            {
+                oSb.Append(HashData[x].ToString("x2"));
+            }
+            auth.password = oSb.ToString();
             DUser userData = _context.DUsers.FirstOrDefault(u => u.login == auth.login &&
             u.password == auth.password);
             if (userData != null)

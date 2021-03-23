@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CoworkingWebApi.Models;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace CoworkingWebApi.Controllers
 {
@@ -28,11 +30,10 @@ namespace CoworkingWebApi.Controllers
         }
 
         // GET: api/DUser/5
-        [HttpGet("{username,pass}")]
-        public async Task<ActionResult<DUser>> GetDUser(string username, string pass)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DUser>> GetDUser(int id)
         {
-            DUser userData = _context.DUsers.FirstOrDefault(u => u.login == username &&
-             u.password == pass);
+            var userData = await _context.DUsers.FindAsync(id);
 
             if (userData == null)
             {
@@ -41,6 +42,7 @@ namespace CoworkingWebApi.Controllers
 
             return userData;
         }
+
 
         // PUT: api/DUser/5
 
@@ -77,10 +79,23 @@ namespace CoworkingWebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<DUser>> PostDUser(DUser dUser)
         {
-            _context.DUsers.Add(dUser);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetDUser", new { id = dUser.id }, dUser);
+            DUser isLoginExcist = _context.DUsers.FirstOrDefault(u => u.login == dUser.login);
+            if (isLoginExcist == null)
+            {
+                byte[] ByteData = Encoding.ASCII.GetBytes(dUser.password);
+                MD5 md5 = MD5.Create();
+                byte[] HashData = md5.ComputeHash(ByteData);
+                StringBuilder oSb = new StringBuilder();
+                for (int x = 0; x < HashData.Length; x++)
+                {
+                    oSb.Append(HashData[x].ToString("x2"));
+                }
+                dUser.password = oSb.ToString();
+                _context.DUsers.Add(dUser);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetDUser", new { id = dUser.id }, dUser);
+            }
+            return BadRequest("Login already exists.");
         }
 
         // DELETE: api/DUser/5

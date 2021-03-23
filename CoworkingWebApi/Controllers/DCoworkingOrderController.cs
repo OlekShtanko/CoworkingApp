@@ -40,6 +40,20 @@ namespace CoworkingWebApi.Controllers
 
             return dCoworkingOrder;
         }
+        [HttpGet("Order/{coworkingId}")]
+        public async Task<List<DCoworkingOrder>> GetAllDCoworkingOrder(int coworkingId)
+        {
+            List<DCoworkingOrder> Orders = new List<DCoworkingOrder>();
+             foreach (var order in _context.DCoworkingOrders)
+            {
+                if (order.coworkingId == coworkingId)
+                {
+                    Orders.Add(order);
+                }
+            }
+
+            return await Task.FromResult(Orders);
+        }
 
         // PUT: api/DCoworkingOrder/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

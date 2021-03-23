@@ -15,10 +15,13 @@ namespace CoworkingWebApi.Models
         public int coworkingId { get; set; }
         [Column(TypeName = "int")]
         public int userId { get; set; }
-        [Column(TypeName = "int")]
-        public int timeStart { get; set; }
-        [Column(TypeName = "int")]
-        public int timeFinish { get; set; }
+        [Column(TypeName = "nvarchar(Max)")]
+        public string timeStart { get; set; }
+        [Column(TypeName = "nvarchar(Max)")]
+        public string timeFinish { get; set; }
+        [Column(TypeName = "float")]
+        public float totalCost { get; set; }
+
 
     }
 }

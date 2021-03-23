@@ -13,9 +13,30 @@ namespace CoworkingWebApi.Models
         public int id { get; set; }
         [Column(TypeName = "int")]
         public int coworkingId { get; set; }
-        [Column(TypeName = "int")]
-        public int functionId { get; set; }
+        [Column(TypeName = "bit")]
+        public bool isTea { get; set; }
         [Column(TypeName = "float")]
-        public float price { get; set; }
+        public float priceTea { get; set; }
+        [Column(TypeName = "bit")]
+        public bool isCoffee { get; set; }
+        [Column(TypeName = "float")]
+        public float priceCoffee { get; set; }
+        [Column(TypeName = "bit")]
+        public bool isTable { get; set; }
+        [Column(TypeName = "float")]
+        public float priceTable { get; set; }
+        [Column(TypeName = "bit")]
+        public bool isChair { get; set; }
+        [Column(TypeName = "float")]
+        public float priceChair { get; set; }
+        [Column(TypeName = "bit")]
+        public bool isSofa { get; set; }
+        [Column(TypeName = "float")]
+        public float priceSofa { get; set; }
+        [Column(TypeName = "bit")]
+        public bool isCola { get; set; }
+        [Column(TypeName = "float")]
+        public float priceCola { get; set; }
+
     }
 }
